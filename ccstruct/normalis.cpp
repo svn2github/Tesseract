@@ -45,6 +45,8 @@ DENORM::DENORM(const DENORM &src) {
 
 
 DENORM & DENORM::operator=(const DENORM & src) {
+  if (this == &src)
+    return *this;
   Clear();
   inverse_ = src.inverse_;
   predecessor_ = src.predecessor_;

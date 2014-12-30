@@ -850,12 +850,14 @@ int OpenclDevice::CompileKernelFile( GPUEnv *gpuInfo, const char *buildOption )
         b_error |= fseek( fd, 0, SEEK_SET ) < 0;
         if ( b_error )
         {
+            free(mpArryDevsID);
             return 0;
         }
 
         binary = (char*) malloc( length + 2 );
         if ( !binary )
         {
+            free(mpArryDevsID);
             return 0;
         }
 
@@ -1353,7 +1355,6 @@ OpenclDevice::pixReadMemTiffCl(const l_uint8 *data,size_t size,l_int32  n)
 	l_int32  i, pagefound;
 	PIX     *pix;
 	TIFF    *tif;
-	L_MEMSTREAM *memStream;
 	PROCNAME("pixReadMemTiffCl");
 
 	if (!data)
