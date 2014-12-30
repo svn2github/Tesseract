@@ -170,6 +170,8 @@ ROW_RES::ROW_RES(bool merge_similar_words, ROW *the_row) {
 
 
 WERD_RES& WERD_RES::operator=(const WERD_RES & source) {
+  if (this == &source)
+    return *this;
   this->ELIST_LINK::operator=(source);
   Clear();
   if (source.combination) {
